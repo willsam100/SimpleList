@@ -18,7 +18,7 @@ type EmployeeListPage() =
         { DisplayName="Sheri Spruce"}
         { DisplayName="Burt Indybrick"} ]
 
-    let _ = base.LoadFromXaml(typeof<EmployeeListPage>)
+    do base.LoadFromXaml(typeof<EmployeeListPage>) |> ignore
     let employeeListView = base.FindByName<ListView>("EmployeeView")
     do employeeListView.ItemsSource <- ((employees |> List.toSeq) :> Collections.IEnumerable)
     do employeeListView.ItemTapped.AddHandler(
